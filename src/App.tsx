@@ -1,25 +1,23 @@
 import React from "react";
-import { NewNoteInput } from "./NewNoteInput";
+import { Counter } from "./Counter";
 import { useSelector, useDispatch } from "react-redux";
-import { NotesState } from "./notesReducer";
-import { addNote } from "./actions";
-
+import { CountState } from "./countReducer";
+import { increment, decrement } from "./actions";
+// <CountState, CountState["count"]>
 function App() {
-  const notes = useSelector<NotesState, NotesState["notes"]>(
-    (state) => state.notes
+  const count = useSelector<CountState, CountState["count"]>(
+    (state) => state.count
   );
   const dispatch = useDispatch();
-  const onAddNote = (note: string) => {
-    dispatch(addNote(note));
+  const onIncrement = () => {
+    dispatch(increment());
+  };
+  const onDecrement = () => {
+    dispatch(decrement());
   };
   return (
     <>
-      <NewNoteInput addNote={onAddNote} />
-      <ul>
-        {notes.map((note) => {
-          return <li key={note}>{note}</li>;
-        })}
-      </ul>
+      <Counter increment={onIncrement} decrement={onDecrement} count={count} />
     </>
   );
 }

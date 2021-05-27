@@ -1,6 +1,9 @@
-export type Action = { type: string; payload: string };
+export type Action = { type: string };
 
-export const addNote = (note: string): Action => ({
-  type: "ADD_NOTE",
-  payload: note,
+export const increment = (): Action => ({
+  type: "INCREMENT",
+});
+
+export const decrement = (): Action => ({
+  type: "DECREMENT",
 });
