@@ -1,12 +1,13 @@
 import React from "react";
 import { Counter } from "./Counter";
 import { useSelector, useDispatch } from "react-redux";
-import { CountState } from "./countReducer";
-import { increment, decrement } from "./actions";
-// <CountState, CountState["count"]>
+import { CountState } from "./counter.reducer";
+import { increment, decrement } from "./counter.actions";
+import { RootState } from "./store";
+
 function App() {
-  const count = useSelector<CountState, CountState["count"]>(
-    (state) => state.count
+  const count = useSelector<RootState, CountState["count"]>(
+    (state) => state.counter.count
   );
   const dispatch = useDispatch();
   const onIncrement = () => {

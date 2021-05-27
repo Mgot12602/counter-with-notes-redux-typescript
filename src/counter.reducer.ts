@@ -1,4 +1,4 @@
-import { Action } from "./actions";
+import { Action } from "./counter.actions";
 
 export interface CountState {
   count: number;
